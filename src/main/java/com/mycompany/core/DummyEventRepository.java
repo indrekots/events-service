@@ -9,6 +9,7 @@ import com.mycompany.api.Event;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+import java.util.Optional;
 
 public class DummyEventRepository implements EventRepository {
 
@@ -37,6 +38,11 @@ public class DummyEventRepository implements EventRepository {
     @Override
     public List<Event> findAll() {
         return events;
+    }
+
+    @Override
+    public Optional<Event> findById(Long id) {
+        return events.stream().filter(e -> e.getId() == id).findFirst();
     }
 
 }

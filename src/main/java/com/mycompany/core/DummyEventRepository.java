@@ -45,5 +45,16 @@ public class DummyEventRepository implements EventRepository {
         return events.stream().filter(e -> e.getId() == id).findFirst();
     }
 
+    @Override
+    public Event save(Event event) {
+        Optional<Long> maxId = events.stream()
+                .map(Event::getId)
+                .max(Long::compare);
+        long nextId = maxId.map(x -> x + 1).orElse(1L);
+        event.setId(nextId);
+        events.add(event);
+        return event;
+    }
+
 }
 

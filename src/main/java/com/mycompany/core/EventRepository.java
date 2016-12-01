@@ -11,4 +11,6 @@ public interface EventRepository {
 
     Optional<Event> findById(Long id);
 
+    Event save(Event event);
+
 }

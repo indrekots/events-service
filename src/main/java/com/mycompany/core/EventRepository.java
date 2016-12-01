@@ -15,4 +15,6 @@ public interface EventRepository {
 
     Optional<Event> update(Long id, Event event);
 
+    void delete(Long id);
+
 }

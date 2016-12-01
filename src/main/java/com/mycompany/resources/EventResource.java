@@ -6,6 +6,7 @@ import io.dropwizard.jersey.params.LongParam;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -45,4 +46,12 @@ public class EventResource {
                 .orElseThrow(() ->
                         new WebApplicationException("Event not found", 404));
     }
+
+    @DELETE
+    @Path("{id}")
+    public Response delete(@PathParam("id") LongParam id) {
+        repository.delete(id.get());
+        return Response.ok().build();
+    }
+
 }

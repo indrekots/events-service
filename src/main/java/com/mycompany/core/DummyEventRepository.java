@@ -63,5 +63,10 @@ public class DummyEventRepository implements EventRepository {
         return existingEvent;
     }
 
+    @Override
+    public void delete(Long id) {
+        events.removeIf(e -> e.getId() == id);
+    }
+
 }
 

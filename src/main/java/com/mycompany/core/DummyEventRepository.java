@@ -34,5 +34,10 @@ public class DummyEventRepository implements EventRepository {
         events = mapper.readValue(json, type);
     }
 
+    @Override
+    public List<Event> findAll() {
+        return events;
+    }
+
 }
 

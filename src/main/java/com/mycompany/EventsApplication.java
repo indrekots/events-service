@@ -1,5 +1,7 @@
 package com.mycompany;
 
+import com.mycompany.core.DummyEventRepository;
+import com.mycompany.core.EventRepository;
 import com.mycompany.resources.EventResource;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
@@ -28,7 +30,8 @@ public class EventsApplication extends Application<EventsConfiguration> {
                     final Environment environment) {
         environment.getObjectMapper().setDateFormat(new SimpleDateFormat(configuration.getDateFormat()));
 
-        final EventResource eventResource = new EventResource();
+        EventRepository repository = new DummyEventRepository();
+        EventResource eventResource = new EventResource(repository);
         environment.jersey().register(eventResource);
     }
 

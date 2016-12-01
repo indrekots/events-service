@@ -48,4 +48,11 @@ public class Event {
     public void setDate(Date date) {
         this.date = date;
     }
+
+    public void updateExceptId(Event event) {
+        this.name = event.name;
+        this.description = event.description;
+        this.location = event.getLocation();
+        this.date = event.date;
+    }
 }

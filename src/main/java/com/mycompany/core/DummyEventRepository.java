@@ -56,5 +56,12 @@ public class DummyEventRepository implements EventRepository {
         return event;
     }
 
+    @Override
+    public Optional<Event> update(Long id, Event event) {
+        Optional<Event> existingEvent = findById(id);
+        existingEvent.ifPresent(e -> e.updateExceptId(event));
+        return existingEvent;
+    }
+
 }
 

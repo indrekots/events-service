@@ -37,4 +37,12 @@ public class EventResource {
     public Event create(Event event) {
         return repository.save(event);
     }
+
+    @PUT
+    @Path("{id}")
+    public Event update(@PathParam("id") LongParam id, Event event) {
+        return repository.update(id.get(), event)
+                .orElseThrow(() ->
+                        new WebApplicationException("Event not found", 404));
+    }
 }

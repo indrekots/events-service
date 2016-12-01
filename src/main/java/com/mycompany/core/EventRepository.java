@@ -13,4 +13,6 @@ public interface EventRepository {
 
     Event save(Event event);
 
+    Optional<Event> update(Long id, Event event);
+
 }
